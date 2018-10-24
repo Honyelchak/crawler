@@ -44,7 +44,7 @@ def generate_base(fontface):
     print("写入成功！")
 
 
-def crawler():
+def get():
 
     req = requests.get(url, headers=header)
 
@@ -52,7 +52,7 @@ def crawler():
 
     data = req.text
 
-    print(data)
+    #print(data)
 
     cmp = re.search(r'url\(data:application/font-woff;charset=utf-8;base64,(.*)\) format\("woff"\)', data).group(1)
 
@@ -105,7 +105,7 @@ def crawler():
     #tbody1 = resp.xpath('/html/*div[@id="ticket_tbody"]')
 
     tbody = resp.xpath('//*[@id="ticket_tbody"]/ul')
-    print(tbody)
+    #print(tbody)
     for ul in tbody:
         #print(etree.tostring(ul))
         name = ul.xpath('./li[1]/b/text()')[0]
@@ -114,7 +114,7 @@ def crawler():
 
         print("%-30s" % name, "%-20s" % span, "%10s" % c2)
 
-crawler()
+get()
 #ttftoxml()
 #generate_base()
 
